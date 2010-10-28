@@ -1,6 +1,13 @@
 # What is Flot? #
 Flot is a pure Javascript plotting library for jQuery. It produces graphical plots of arbitrary datasets on-the-fly client-side. Learn more at on the [Flot project home page](http://code.google.com/p/flot/).
 
+# Examples of plugins #
+Sparkline:
+![Sparkline](http://github.com/ReturnPath/flot-plugins/raw/master/examples/sparkline.png "Sparkline")
+
+Bullet Chart:
+![Bullet Chart](http://github.com/ReturnPath/flot-plugins/raw/master/examples/bullet.png "Bullet Chart")
+
 # How do I use these plugins? #
 Just include jQuery, and flot, and plugin JS files on your page, and use it as a normal Flot plugin:
     
