@@ -19,7 +19,7 @@ emphasizing and annotating the last point on the chart.
 */
 (function ($) {
     var options = {
-        series: { sparkline: null } // or true
+        series: { sparkline: null } // or true or {lastPoint: true}
     };
     
     function init(plot) {
@@ -51,7 +51,8 @@ emphasizing and annotating the last point on the chart.
 		 * @param ctx - Canvas context
 		 */
 		function emphasizeLastPoint(plot, ctx) {
-			if (!plot.getOptions().series.sparkline) return;
+			var sparklineOpts = plot.getOptions().series.sparkline;
+			if (!sparklineOpts || !sparklineOpts.lastPoint) return;
 			var lastPoint = getLastPoint(plot.getData());
 			
 			var lastPointOffset = plot.pointOffset({ x: lastPoint[0], y: lastPoint[1] });
@@ -78,7 +79,6 @@ emphasizing and annotating the last point on the chart.
 			
 			options.grid.show = false;
 			series.lines.show = true;
-			series.lines.fill = false;
 			series.bars.show = false;
 			series.points.show = false;
 		}
@@ -91,6 +91,6 @@ emphasizing and annotating the last point on the chart.
         init: init,
         options: options,
         name: 'sparkline',
-        version: '1.0'
+        version: '1.1'
     });
 })(jQuery);
