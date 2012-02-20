@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Datelinks Plugin example</title>
+	</head>
+	<body>
+		<h1>Datelinks Plugin example</h1>
+		
+		<div id="placeholder" style="width:600px;height:400px;"></div>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<!--[if lte IE 8]><script type="text/javascript" src="excanvas.min.js"></script><![endif]-->
+		<script type="text/javascript" src="jquery.flot.min.js"></script>
+		<script type="text/javascript" src="../jquery.flot.datelinks.js"></script>
+		<script type="text/javascript">
+			function showChart() {
+				var placeholder = $("#placeholder"),
+					data = [{
+						data: [
+							[1325401200000, 2],
+							[1328079600000, 84],
+							[1330585200000, 31],
+							[1333260000000, 11],
+							[1335852000000, 8],
+							[1338530400000, 41],
+							[1341122400000, 30],
+							[1343800800000, 18],
+							[1346479200000, 48],
+							[1349071200000, 64],
+							[1351749600000, 60],
+							[1354345200000, 27]
+						],
+						color: "#6699FF"
+					}],
+					options = {
+						xaxis: { mode: 'time' },
+						yaxis: { min: 0, max: 100 },
+						series: { datelinks: true }
+					},
+					plot = $.plot(placeholder, data, options);
+			}
+			
+			$(showChart);
+		</script>
+	</body>
+</html>

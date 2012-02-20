@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Bullet Plugin example</title>
+	</head>
+	<body>
+		<h1>Bullet Plugin example</h1>
+		
+		<div id="placeholder" style="width:200px;height:40px;"></div>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<!--[if lte IE 8]><script type="text/javascript" src="excanvas.min.js"></script><![endif]-->
+		<script type="text/javascript" src="jquery.flot.min.js"></script>
+		<script type="text/javascript" src="../jquery.flot.bullet.js"></script>
+		<script type="text/javascript">
+			function showChart() {
+				var placeholder = $("#placeholder"),
+					data = [
+						{data: [[100, 0]], color: '#0C0'},
+						{data: [[50, 0]], color: '#FFD200'},
+						{data: [[25, 0]], color: '#C00'}
+					],
+					options = {
+						yaxis: {color: "transparent"},
+						xaxis: {ticks: [0, 50, 100]},
+						series: {
+							bullet: {min: 0, max: 100, target: 90, actual: 53}
+						}
+					};
+				$.plot(placeholder, data, options);
+			}
+			
+			$(showChart);
+		</script>
+	</body>
+</html>

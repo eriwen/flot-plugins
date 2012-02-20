@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Sparkline Plugin example</title>
+	</head>
+	<body>
+		<h1>Sparkline Plugin example</h1>
+		
+		<div id="simple-placeholder" style="width:200px;height:100px;"></div>
+		
+		<p style="margin-top:100px;"><em>Tastes great with the Threshold plugin ;)</em></p>
+		<div id="advanced-placeholder" style="width:200px;height:100px;"></div>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<!--[if lte IE 8]><script type="text/javascript" src="excanvas.min.js"></script><![endif]-->
+		<script type="text/javascript" src="jquery.flot.min.js"></script>
+		<script type="text/javascript" src="jquery.flot.threshold.js"></script>
+		<script type="text/javascript" src="../jquery.flot.sparkline.js"></script>
+		<script type="text/javascript">
+			function showSimpleChart() {
+				$.plot($("#simple-placeholder"), [{
+					data: [[1285614437984, 7], [1285614537984, 50], [1285614637984, 17], [1285614737984, 67]],
+					color: "#6699FF"
+				}], {
+					xaxis: { mode: 'time' },
+					yaxis: { min: 0, max: 100 },
+					series: { sparkline: true }
+				});
+			}
+			
+			function showAdvancedChart() {
+				$.plot($("#advanced-placeholder"), [{
+					data: [[1285614437984, 75], [1285614537984, 42], [1285614637984, 27], [1285614737984, 67]],
+					color: "#6699FF",
+					threshold: { below: 40, color: "#FF0000" },
+				}], {
+					xaxis: { mode: 'time' },
+					yaxis: { min: 0, max: 100 },
+					series: { sparkline: { lastPoint: true } }
+				});
+			}
+			
+			$(showSimpleChart);
+			$(showAdvancedChart);
+		</script>
+	</body>
+</html>
