@@ -51,7 +51,7 @@ users to select different time ranges (e.g. max, 1y, 6m, 3m, 1m, 2w, 1w).
 			    fragment = document.createDocumentFragment(),
 			    wrapper = document.createElement('div');
 			
-			wrapper.id = 'date-period-links';
+			wrapper.className = 'date-period-links';
 
 			// TODO: this puts it in the top-left, but there's no reason we can't move this around
 			wrapper.style.cssText = 'position:absolute; left:' + (topLeftOffset.left + 5) + 'px; top: 10px;';
