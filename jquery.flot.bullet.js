@@ -1,12 +1,12 @@
-/*
-  Copyright 2010 Return Path, Inc
-      http://www.returnpath.net.net/
+/*!
+  Copyright 2010 Return Path, Inc (http://www.returnpath.net.net/)
+			2012 Eric Wendelin (http://eriwen.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
 
-      http://www.apache.org/licenses/LICENSE-2.0
+	  http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,11 +19,11 @@ actual value while showing a green (good), yellow (warning), and red (bad)
 ranges. 
 */
 (function ($) {
-    var options = {
+	var options = {
 		series: { bullet: null } // or { min: 0, max: 100, target: 90, actual: 75 }
-    };
-    
-    function init(plot) {
+	};
+	
+	function init(plot) {
 		/**
 		 * Draw an overlay of a dot over the last point on the given plot.
 		 * 
@@ -51,9 +51,9 @@ ranges.
 			// Draw actual
 			if (bulletOpts.actual) {
 				var actualOffset = plot.pointOffset({ x: bulletOpts.actual, y: 0 });
-				plot.getPlaceholder().append('<div class="actual"'
-				 	+ 'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:'
-				 	+ (actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
+				plot.getPlaceholder().append('<div class="actual"' +
+					'style="position:absolute;left:' + (actualOffset.left + 4) + 'px;top:' +
+					(actualOffset.top - (height - 4) * 2) + 'px;">'+bulletOpts.actual+'</div>');
 				ctx.fillRect(actualOffset.left - 1, actualOffset.top - (height / 1.5), 2, height * 1.5);
 				ctx.save();
 			}
@@ -76,10 +76,11 @@ ranges.
 			grid.show = true;
 			grid.borderWidth = 0;
 			
-			var bars = series.bars;			
+			var bars = series.bars;
 			bars.show = true;
 			bars.align = 'center';
-			bars.lineWidth = 6;
+			bars.barWidth = 0;
+			bars.lineWidth = 10;
 			bars.horizontal = true;
 			
 			var xaxis = options.xaxis;
@@ -91,19 +92,20 @@ ranges.
 			yaxis.min = -2;
 			yaxis.max = 2;
 			yaxis.ticks = 0;
+			yaxis.color = "#FFFFFF";
 			
 			options.colors = ['#0C0', '#FFD200', '#C00', '#FFD200', '#0C0'];
 		}
 		
 		plot.hooks.processOptions.push(overrideOptionsForBullet);
 		plot.hooks.processDatapoints.push(overrideYCoords);
-        plot.hooks.draw.push(drawAnnotations);
-    }
-    
-    $.plot.plugins.push({
-        init: init,
-        options: options,
-        name: 'bullet',
-        version: '1.0'
-    });
+		plot.hooks.draw.push(drawAnnotations);
+	}
+	
+	$.plot.plugins.push({
+		init: init,
+		options: options,
+		name: 'bullet',
+		version: '1.1'
+	});
 })(jQuery);
