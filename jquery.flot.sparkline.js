@@ -1,6 +1,6 @@
-/*
-  Copyright 2010 Return Path, Inc
-      http://www.returnpath.net.net/
+/*!
+Copyright 2010 Return Path, Inc (http://www.returnpath.net.net/)
+          2012 Eric Wendelin (http://eriwen.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
